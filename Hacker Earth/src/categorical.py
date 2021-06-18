@@ -8,7 +8,7 @@ from colorama import Fore, Style, init
 init()
 
 TRAINING_DATA = os.environ.get("TRAINING_DATA")
-TESTING_DATA = os.environ.get("TEST_DATA")
+#TESTING_DATA = os.environ.get("TEST_DATA")
 TYPE = os.environ.get("TYPE")
 NA = os.environ.get("NA")
 PATH = os.environ.get("MODEL_PATH")
@@ -102,19 +102,19 @@ if __name__ == "__main__":
     print("\nExecuting The Encoding Module .........")
     time.sleep(7)
     train = pd.read_csv(TRAINING_DATA)
-    test = pd.read_csv(TESTING_DATA)
+    #test = pd.read_csv(TESTING_DATA)
     print("Shape of Train input : ", train.shape)
-    print("Shape of Test : ",test.shape)
+    #print("Shape of Test : ",test.shape)
     print("\nTrain Columns : \n", train.columns)
-    print("\nTest Columns : \n", test.columns)
+    #print("\nTest Columns : \n", test.columns)
     train_len = len(train)
-    df = pd.concat([train, test], axis=0,ignore_index=True)
+    #df = pd.concat([train, test], axis=0,ignore_index=True)
 
     #cols = [c for c in df.columns if c not in ["id", "target"]]
     ## Select categorical columns
     #cols = df.select_dtypes(include=['object']).columns.tolist()
     
-    cols = [c for c in df.columns if c not in ["id", "target"]]
+    cols = [c for c in train.columns]
     '''
     try:
         cols.remove('id')

@@ -114,7 +114,7 @@ if __name__ == "__main__":
     ## Select categorical columns
     #cols = df.select_dtypes(include=['object']).columns.tolist()
     
-    cols = [c for c in train.columns]
+    cols = ['Insurance_company']
     '''
     try:
         cols.remove('id')
@@ -126,7 +126,7 @@ if __name__ == "__main__":
     except:
         print("Column target not Found in object Data Type")
     '''
-    cat_feats = CategoricalFeatures(dataframe=df,
+    cat_feats = CategoricalFeatures(dataframe=train,
                                     categorical_features=cols,
                                     encoding_type=TYPE,
                                     handle_na=NA)
@@ -140,7 +140,7 @@ if __name__ == "__main__":
     print("Train Columns : \n", train.columns)
     print("Test Columns : \n", test.columns)
     train.to_csv(f"{TRAINING_DATA[:-4]}.csv", index=False)
-    test.to_csv(f"{TESTING_DATA[:-4]}.csv", index=False)
+#    test.to_csv(f"{TESTING_DATA[:-4]}.csv", index=False)
     joblib.dump(train.columns, f"{PATH}columns.pkl")
     print(f"{Fore.GREEN}File Successfully Modified ...{Style.RESET_ALL}")
 
